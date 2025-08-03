@@ -1,4 +1,4 @@
-package com.yourdaysinvenezia
+package app.veneziaexplore.casinodivenezia.guide.your.days
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
