@@ -43,7 +43,6 @@ const ROW_BG = '#650006';
 const STORE_KEY = 'plan_saved_days_v1';
 const ICONS = {
   back: require('../assets/back.png'),
-  crown: require('../assets/crown.png'),
 };
 
 export default function PlanScreen(): React.JSX.Element {
@@ -252,11 +251,6 @@ export default function PlanScreen(): React.JSX.Element {
             contentContainerStyle={[styles.centerAll, { paddingTop: topPad, paddingBottom: bottomPad }]}
             showsVerticalScrollIndicator={false}
           >
-            <Image
-              source={ICONS.crown}
-              style={{ width: 70, height: 70, marginBottom: 10 }}
-              resizeMode="contain"
-            />
             <Text style={[styles.h1, { fontSize: isSmall ? 22 : 24 }]}>Plan Your Days in Venice</Text>
 
             <View style={[styles.emptyCard, { width: contentW, marginTop: 38 }]}>
@@ -382,11 +376,6 @@ export default function PlanScreen(): React.JSX.Element {
             showsVerticalScrollIndicator={false}
           >
 
-            <Image
-              source={ICONS.crown}
-              style={{ width: 70, height: 70, marginBottom: 6 }}
-              resizeMode="contain"
-            />
             <Text style={[styles.h1, { marginBottom: 4 }]}>Plan Your Days in Venice</Text>
 
             {saved.map(day => (

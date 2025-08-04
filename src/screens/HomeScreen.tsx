@@ -169,11 +169,7 @@ export default function HomeScreen({navigation}: Props): React.JSX.Element {
   const Content = (
     <>
       <View style={[styles.centerBlock, { width: contentW }]}>
-        <Image
-          source={require('../assets/crown.png')}
-          style={{ width: 70, height: 70, marginBottom: 10 }}
-          resizeMode="contain"
-        />
+
         <Animated.Text style={[styles.title, { fontSize: isSmallScreen ? 24 : 29 }, titleStyle]}>
           Explore the Beauty of Venice
         </Animated.Text>

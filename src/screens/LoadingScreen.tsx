@@ -7,7 +7,6 @@ import {
   Easing,
   useWindowDimensions,
   ImageSourcePropType,
-  Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -18,7 +17,6 @@ type Props = {
 };
 
 export default function LoadingScreen({ navigation }: Props): React.JSX.Element {
-  const insets = useSafeAreaInsets();
   const { width, height } = useWindowDimensions();
   const isSmallH = height < 700;
   const isSmallW = width < 360;
@@ -32,8 +30,6 @@ export default function LoadingScreen({ navigation }: Props): React.JSX.Element 
 
   const logoScale = useRef(new Animated.Value(0.92)).current;
   const logoOpacity = useRef(new Animated.Value(0)).current;
-
-  const crownOpacities = Array.from({ length: 5 }, () => useRef(new Animated.Value(0)).current);
 
   useEffect(() => {
     Animated.sequence([
@@ -69,65 +65,19 @@ export default function LoadingScreen({ navigation }: Props): React.JSX.Element 
       ).start();
     });
 
-    crownOpacities.forEach((opacity, index) => {
-      Animated.loop(
-        Animated.sequence([
-          Animated.delay(index * 400),
-          Animated.timing(opacity, {
-            toValue: 1,
-            duration: 800,
-            easing: Easing.inOut(Easing.ease),
-            useNativeDriver: true,
-          }),
-          Animated.timing(opacity, {
-            toValue: 0,
-            duration: 800,
-            easing: Easing.inOut(Easing.ease),
-            useNativeDriver: true,
-          }),
-          Animated.delay(600),
-        ]),
-      ).start();
-    });
-
     const t = setTimeout(() => {
       navigation.replace('Onboarding');
-    }, 3500 + Math.random() * 1500);
+    }, 4000);
 
     return () => clearTimeout(t);
   }, []);
 
-  const baseSize = 60;
-  const crownData = [
-    { top: 40, left: 30, scale: 1 },
-    { top: height - 130, right: 40, scale: 0.8 },
-    { top: 110, right: 30, scale: 0.6 },
-    { top: height / 2 + 100, left: 40, scale: 1.2 },
-    { bottom: 30, left: width / 2 - 40, scale: 0.9 },
-  ];
-
   return (
     <View style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor={BG_COLOR} />
-      {crownData.map(({ scale, ...position }, index) => (
-        <Animated.Image
-          key={index}
-          source={require('../assets/crown.png')}
-          style={{
-            position: 'absolute',
-            width: baseSize,
-            height: baseSize,
-            resizeMode: 'contain',
-            transform: [{ scale }],
-            opacity: crownOpacities[index],
-            ...position,
-          }}
-        />
-      ))}
-
       <View style={styles.logoWrap}>
         <Animated.Image
-          source={require('../assets/image_loader1.png') as ImageSourcePropType}
+          source={require('../assets/image_loader.png') as ImageSourcePropType}
           style={{
             width: logoMaxSide,
             height: logoMaxSide,
@@ -142,6 +92,13 @@ export default function LoadingScreen({ navigation }: Props): React.JSX.Element 
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: BG_COLOR },
-  logoWrap: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  container: {
+    flex: 1,
+    backgroundColor: BG_COLOR,
+  },
+  logoWrap: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

@@ -39,7 +39,6 @@ const APP_KEYS   = [
 ];
 
 const ICONS = {
-    crown: require('../assets/crown.png'),
     share: require('../assets/share.png'), 
 };
 
@@ -141,11 +140,6 @@ export default function SettingsScreen(): React.JSX.Element {
           contentContainerStyle={{paddingTop: topPad, paddingBottom: bottomPad, alignItems: 'center'}}
           showsVerticalScrollIndicator={false}
         >
-          <Image
-            source={ICONS.crown}
-            style={{ width: 70, height: 70, marginBottom: 10 }}
-            resizeMode="contain"
-          />
           <Text style={[styles.title, {fontSize: isSmall ? 22 : 24}]}>Settings</Text>
 
           <View style={[styles.row, {width: contentW}]}>

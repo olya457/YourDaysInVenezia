@@ -237,11 +237,6 @@ export default function ExploreScreen(): React.JSX.Element {
         }}
         ListHeaderComponent={
           <View style={{ alignItems: 'center' }}>
-            <Image
-              source={require('../assets/crown.png')}
-              style={{ width: 70, height: 70, marginBottom: 10 }}
-              resizeMode="contain"
-            />
             <Text style={[styles.title, {fontSize: isSmall ? 26 : 28}]}>
               Explore the Beauty of Venice
             </Text>
